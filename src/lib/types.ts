@@ -24,6 +24,7 @@ interface MealsContextType {
   setMeals: Dispatch<SetStateAction<MealType[]>>;
   favorites: string[];
   setFavorites: Dispatch<SetStateAction<string[]>>;
+  handleFavorites: (id: string) => void;
 }
 
 export type { MealType, MealsContextType };

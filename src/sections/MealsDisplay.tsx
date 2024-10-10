@@ -5,17 +5,9 @@ import { MealsContextType } from '../lib/types';
 import { MdOutlineFavorite, MdOutlineFavoriteBorder } from 'react-icons/md';
 
 const MealsDisplay = () => {
-  const { meals, favorites, setFavorites } = useContext(
+  const { meals, favorites, handleFavorites } = useContext(
     MealsContext
   ) as MealsContextType;
-
-  const handleFavorites = (id: string) => {
-    if (favorites.includes(id)) {
-      setFavorites((prev) => prev.filter((each) => each !== id));
-    } else {
-      setFavorites((prev) => [...prev, id]);
-    }
-  };
 
   return (
     <div className="bg-slate-50 py-20">
@@ -45,9 +37,9 @@ const MealsDisplay = () => {
                   <h4 className="text-xl font-semibold">{strMeal}</h4>
                   <button type="button" onClick={() => handleFavorites(idMeal)}>
                     {favorites.includes(idMeal) ? (
-                      <MdOutlineFavorite />
+                      <MdOutlineFavorite className="fill-red-500" />
                     ) : (
-                      <MdOutlineFavoriteBorder />
+                      <MdOutlineFavoriteBorder className="fill-blue-500" />
                     )}
                   </button>
                 </div>

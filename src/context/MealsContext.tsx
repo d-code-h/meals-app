@@ -23,6 +23,14 @@ const GlobalMealsContext = ({ children }: { children: ReactNode }) => {
     getMeals();
   }, []);
 
+  const handleFavorites = (id: string) => {
+    if (favorites.includes(id)) {
+      setFavorites((prev) => prev.filter((each) => each !== id));
+    } else {
+      setFavorites((prev) => [...prev, id]);
+    }
+  };
+
   return (
     <MealsContext.Provider
       value={{
@@ -30,6 +38,7 @@ const GlobalMealsContext = ({ children }: { children: ReactNode }) => {
         setMeals,
         favorites,
         setFavorites,
+        handleFavorites,
       }}
     >
       {children}
