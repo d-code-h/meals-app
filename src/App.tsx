@@ -1,7 +1,12 @@
+import GlobalMealsContext from './context/MealsContext';
+import MealsDisplay from './sections/MealsDisplay';
+
 function App() {
   return (
     <main>
-      <h1 className="text-8xl p-5">Meals App</h1>
+      <GlobalMealsContext>
+        <MealsDisplay />
+      </GlobalMealsContext>
     </main>
   );
 }
