@@ -2,8 +2,20 @@ import { useContext } from 'react';
 import { MealsContext } from '../context/MealsContext';
 import { MealsContextType } from '../lib/types';
 
+import { MdOutlineFavorite, MdOutlineFavoriteBorder } from 'react-icons/md';
+
 const MealsDisplay = () => {
-  const { meals } = useContext(MealsContext) as MealsContextType;
+  const { meals, favorites, setFavorites } = useContext(
+    MealsContext
+  ) as MealsContextType;
+
+  const handleFavorites = (id: string) => {
+    if (favorites.includes(id)) {
+      setFavorites((prev) => prev.filter((each) => each !== id));
+    } else {
+      setFavorites((prev) => [...prev, id]);
+    }
+  };
 
   return (
     <div className="bg-slate-50 py-20">
@@ -31,6 +43,13 @@ const MealsDisplay = () => {
               <div className="p-3">
                 <div className="flex justify-between mb-4">
                   <h4 className="text-xl font-semibold">{strMeal}</h4>
+                  <button type="button" onClick={() => handleFavorites(idMeal)}>
+                    {favorites.includes(idMeal) ? (
+                      <MdOutlineFavorite />
+                    ) : (
+                      <MdOutlineFavoriteBorder />
+                    )}
+                  </button>
                 </div>
                 <div className="flex gap-3 flex-wrap justify-center w-[300px] mx-auto">
                   <small className="bg-red-200 px-2 py-1 rounded-md">

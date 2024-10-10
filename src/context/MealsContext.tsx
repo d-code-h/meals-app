@@ -6,7 +6,8 @@ import axios from 'axios';
 export const MealsContext = createContext<null | MealsContextType>(null);
 
 const GlobalMealsContext = ({ children }: { children: ReactNode }) => {
-  const [meals, setMeals] = useState<MealType[] | []>([]);
+  const [meals, setMeals] = useState<MealType[]>([]);
+  const [favorites, setFavorites] = useState<string[]>([]);
 
   useEffect(() => {
     const getMeals = async () => {
@@ -27,6 +28,8 @@ const GlobalMealsContext = ({ children }: { children: ReactNode }) => {
       value={{
         meals,
         setMeals,
+        favorites,
+        setFavorites,
       }}
     >
       {children}
