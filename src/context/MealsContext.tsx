@@ -6,7 +6,8 @@ import axios from 'axios';
 export const MealsContext = createContext<null | MealsContextType>(null);
 
 const GlobalMealsContext = ({ children }: { children: ReactNode }) => {
-  const [meals, setMeals] = useState<MealType[] | []>([]);
+  const [meals, setMeals] = useState<MealType[]>([]);
+  const [favorites, setFavorites] = useState<string[]>([]);
 
   useEffect(() => {
     const getMeals = async () => {
@@ -22,11 +23,22 @@ const GlobalMealsContext = ({ children }: { children: ReactNode }) => {
     getMeals();
   }, []);
 
+  const handleFavorites = (id: string) => {
+    if (favorites.includes(id)) {
+      setFavorites((prev) => prev.filter((each) => each !== id));
+    } else {
+      setFavorites((prev) => [...prev, id]);
+    }
+  };
+
   return (
     <MealsContext.Provider
       value={{
         meals,
         setMeals,
+        favorites,
+        setFavorites,
+        handleFavorites,
       }}
     >
       {children}
