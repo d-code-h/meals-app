@@ -24,7 +24,7 @@ const Favorites = () => {
     return (
       <div
         className={clsx(
-          'bg-blue-100 py-8 sticky top-0',
+          'bg-blue-100 py-8 sticky top-0 z-10',
           isScroll ? 'bg-opacity-50' : 'bg-opacity-80'
         )}
       >
