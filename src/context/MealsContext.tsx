@@ -8,6 +8,7 @@ export const MealsContext = createContext<null | MealsContextType>(null);
 const GlobalMealsContext = ({ children }: { children: ReactNode }) => {
   const [meals, setMeals] = useState<MealType[]>([]);
   const [favorites, setFavorites] = useState<string[]>([]);
+  const [search, setSearch] = useState<string>('');
 
   useEffect(() => {
     const getMeals = async () => {
@@ -39,6 +40,8 @@ const GlobalMealsContext = ({ children }: { children: ReactNode }) => {
         favorites,
         setFavorites,
         handleFavorites,
+        search,
+        setSearch,
       }}
     >
       {children}
