@@ -38,11 +38,11 @@ const MealCard = ({
       <div className="p-3">
         <div className="flex justify-between mb-4">
           <h4 className="text-xl font-semibold">{strMeal}</h4>
-          <button type="button" onClick={() => handleFavorites(idMeal)}>
+          <button type="button" onClick={(e) => handleFavorites(e, idMeal)}>
             {favorites.includes(idMeal) ? (
-              <MdOutlineFavorite className="fill-red-500" />
+              <MdOutlineFavorite className="fill-red-500 size-5" />
             ) : (
-              <MdOutlineFavoriteBorder className="fill-blue-500" />
+              <MdOutlineFavoriteBorder className="fill-blue-500 size-5" />
             )}
           </button>
         </div>

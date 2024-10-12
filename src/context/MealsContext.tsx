@@ -29,7 +29,11 @@ const GlobalMealsContext = ({ children }: { children: ReactNode }) => {
     getMeals();
   }, []);
 
-  const handleFavorites = (id: string) => {
+  const handleFavorites = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    id: string
+  ) => {
+    e.stopPropagation();
     if (favorites.includes(id)) {
       setFavorites((prev) => prev.filter((each) => each !== id));
     } else {

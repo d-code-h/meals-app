@@ -25,27 +25,27 @@ const MealCard = ({
   return (
     <section
       key={idMeal}
-      className="transition-all duration-500 flex flex-col gap-3 my-3 pb-1 justify-center bg-white rounded-md"
+      className="transition-all duration-500 flex flex-col gap-5 pb-1 bg-white rounded-md"
     >
       <img
         src={strMealThumb}
         alt={strMeal}
         width={300}
         height={300}
-        className="w-full h-[300px] sm:h-[300px] md:auto rounded-md"
+        className="w-full h-[300px] sm:h-[300px] rounded-md"
       />
       <div className="p-3">
         <div className="flex justify-between mb-4">
           <h4 className="text-xl font-semibold">{strMeal}</h4>
-          <button type="button" onClick={() => handleFavorites(idMeal)}>
+          <button type="button" onClick={(e) => handleFavorites(e, idMeal)}>
             {favorites.includes(idMeal) ? (
-              <MdOutlineFavorite className="fill-red-500" />
+              <MdOutlineFavorite className="fill-red-500 size-5" />
             ) : (
-              <MdOutlineFavoriteBorder className="fill-blue-500" />
+              <MdOutlineFavoriteBorder className="fill-blue-500 size-5" />
             )}
           </button>
         </div>
-        <div className="flex gap-3 flex-wrap justify-center w-[300px] mx-auto">
+        <div className="flex gap-3 flex-wrap justify-center max-w-[300px] mx-auto">
           {[strIngredient1, strIngredient2, strIngredient3].map(
             (ingredient, index) => (
               <small

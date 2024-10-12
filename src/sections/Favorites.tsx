@@ -24,30 +24,30 @@ const Favorites = () => {
     return (
       <div
         className={clsx(
-          'bg-blue-100 py-8 sticky top-0 z-10',
+          'bg-blue-100 py-0 sticky top-0 z-10',
           isScroll ? 'bg-opacity-50' : 'bg-opacity-80'
         )}
       >
-        <section className="w-1/3 mx-auto">
+        <section className="w-full mx-auto overflow-auto">
           {/* {!isScroll && (
             <h2 className="text-2xl font-semibold mb-2">Favorites</h2>
           )} */}
-          <div className="flex gap-5 justify-center text-center">
+          <div className="flex py-3 md:p-5 gap-0 md:gap-5 justify-center text-center overflow-auto first-of-type:pl-12">
             {meals
               .filter((meal: MealType) => favorites.includes(meal.idMeal))
               .map((meal) => (
                 <div key={meal.idMeal} className="group relative">
-                  <div className="text-center flex gap-2 flex-col relative">
-                    <div className="hidden group-hover:flex rounded-full w-50 h-50 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -inset-10 bg-red-200 bg-opacity-70 z-10 justify-center items-center font-bold">
-                      <h4>{meal.strMeal}</h4>
+                  <div className="text-center gap-2 flex-col relative">
+                    <div className="hidden group-hover:flex rounded-full w-16 h-16 md:w-20 md:h-20 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -inset-10 bg-red-200 bg-opacity-70 z-10 justify-center items-center font-bold">
+                      <h4 className="text-sm md:text-md ">{meal.strMeal}</h4>
                     </div>
-                    <div className="p-2 w-22 h-22 rounded-full bg-red-50">
+                    <div className="p-2 rounded-full bg-red- w-20 h-20 md:w-24 md:h-24">
                       <img
                         src={meal.strMealThumb}
                         alt={meal.strMeal}
                         width={30}
                         height={30}
-                        className="rounded-full w-24 h-24"
+                        className="rounded-full w-full h-full"
                       />
                     </div>
                   </div>
