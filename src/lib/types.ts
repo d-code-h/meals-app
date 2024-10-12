@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 
 interface MealType {
   idMeal: string;
@@ -22,11 +22,14 @@ interface MealType {
 interface MealsContextType {
   meals: MealType[];
   setMeals: Dispatch<SetStateAction<MealType[]>>;
+  filteredMeals: MealType[];
   favorites: string[];
   setFavorites: Dispatch<SetStateAction<string[]>>;
-  handleFavorites: (id: string) => void;
+  handleFavorites: (e: React.MouseEvent<HTMLButtonElement>, id: string) => void;
   search: string;
   setSearch: Dispatch<SetStateAction<string>>;
+  open: string;
+  setOpen: Dispatch<SetStateAction<string>>;
 }
 
 export type { MealType, MealsContextType };
