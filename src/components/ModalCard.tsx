@@ -12,11 +12,12 @@ const MealCard = ({
     strIngredient1,
     strIngredient2,
     strIngredient3,
+    strInstructions,
   },
 }: {
   meal: MealType;
 }) => {
-  const { meals, favorites, handleFavorites } = useContext(
+  const { open, meals, favorites, handleFavorites } = useContext(
     MealsContext
   ) as MealsContextType;
 
@@ -25,14 +26,14 @@ const MealCard = ({
   return (
     <section
       key={idMeal}
-      className="transition-all duration-500 flex flex-col gap-3 my-3 pb-1 justify-center bg-white rounded-md"
+      className="transition-all duration-500  bg-white rounded-md "
     >
       <img
         src={strMealThumb}
         alt={strMeal}
-        width={300}
-        height={300}
-        className="w-full h-[300px] sm:h-[300px] md:auto rounded-md"
+        width={200}
+        height={200}
+        className="w-full h-72 lg:h-96 rounded-md"
       />
       <div className="p-3">
         <div className="flex justify-between mb-4">
@@ -64,6 +65,37 @@ const MealCard = ({
             )
           )}
         </div>
+
+        {open && (
+          <div
+            className="mt-3 bg-slate-100 rounded-md p-2 whitespace-pre-wrap
+          h-[calc(100vh-70vh)] overflow-y-auto
+          "
+          >
+            {strInstructions.split('\r\n\r\n').map((each) => (
+              <>
+                {each.split('\r\n').length === 2 ? (
+                  each
+                    .split('\r\n')
+                    .map((e, i) => (
+                      <span className=" whitespace-pre-wrap">
+                        {i === 0 ? (
+                          <h4 className="font-semibold">{e}</h4>
+                        ) : (
+                          <p className="text-sm">{e}</p>
+                        )}
+                      </span>
+                    ))
+                ) : (
+                  <p className="text-sm">
+                    {each} <br />
+                  </p>
+                )}
+                <br />
+              </>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

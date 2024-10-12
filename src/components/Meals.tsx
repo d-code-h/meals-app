@@ -9,7 +9,7 @@ const Meals = ({ meal }: { meal: MealType }) => {
   return (
     <div
       key={meal.idMeal}
-      className="hover:shadow-xl hover:ring-1 ring-slate-300 hover:scale-105  cursor-pointer"
+      className="hover:shadow-xl hover:ring-1 ring-slate-300 hover:scale-105  cursor-pointer w-full sm:w-auto"
       onClick={() => setOpen(meal.idMeal)}
     >
       <MealCard meal={meal} />
