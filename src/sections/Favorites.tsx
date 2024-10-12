@@ -52,7 +52,7 @@ const Favorites = () => {
                     </div>
                   </div>
                   <button
-                    onClick={() => handleFavorites(meal.idMeal)}
+                    onClick={(e) => handleFavorites(e, meal.idMeal)}
                     type="button"
                     className="mt-2 hidden group-hover:block mx-auto absolute right-3 bottom-3 z-40"
                   >
