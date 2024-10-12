@@ -9,6 +9,11 @@ const GlobalMealsContext = ({ children }: { children: ReactNode }) => {
   const [meals, setMeals] = useState<MealType[]>([]);
   const [favorites, setFavorites] = useState<string[]>([]);
   const [search, setSearch] = useState<string>('');
+  const [open, setOpen] = useState<string>('');
+
+  const filteredMeals = meals.filter((meal) =>
+    Object.values(meal).join('').toLowerCase().includes(search.toLowerCase())
+  );
 
   useEffect(() => {
     const getMeals = async () => {
@@ -37,11 +42,14 @@ const GlobalMealsContext = ({ children }: { children: ReactNode }) => {
       value={{
         meals,
         setMeals,
+        filteredMeals,
         favorites,
         setFavorites,
         handleFavorites,
         search,
         setSearch,
+        open,
+        setOpen,
       }}
     >
       {children}
